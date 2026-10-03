@@ -693,3 +693,13 @@ section[id], [id^="expr-"] { scroll-margin-top: var(--hdr-h); }
   .coda { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
   .coda__in { width: 100%; }
 }
+@media (max-width: 767px) {
+  .hero, .vid, .bench.is-staged .bench__stage, .is-scrub .scrubx__stage { height: 100lvh; }
+  .vid__copy { bottom: calc(var(--sp-9) + (100lvh - 100svh)); }
+  .vid__toggle { bottom: calc(var(--sp-6) + (100lvh - 100svh)); }
+  .is-scrub .scrubx__copy, .is-scrub .scrubx__copy--a, .is-scrub .scrubx__copy--b { bottom: calc(var(--sp-6) + (100lvh - 100svh)); }
+  .beat, .beat__ph, .beat__zoom, .sheet { width: 100%; }
+  .beat__ph img { width: 100%; }
+  #miami { margin-top: 50svh; }
+}
+@media (max-width: 767px) { .records-act { height: 100lvh; padding-bottom: calc(var(--sp-5) + (100lvh - 100svh)); } }
