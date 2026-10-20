@@ -64,12 +64,12 @@ html:has(.model-page) { overflow: hidden; }
 }
 .bsheet__field input:focus, .bsheet__field select:focus, .bsheet__field textarea:focus { outline: none; background: rgb(255 255 255 / .7); border-bottom-color: var(--cz-ink); }
 .bsheet__field input:not(:placeholder-shown), .bsheet__field textarea:not(:placeholder-shown), .bsheet__field select { background: rgb(255 255 255 / .6); }
-.bsheet__field select { background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+.bsheet__field select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0A0A' stroke-width='3' stroke-linecap='square' stroke-linejoin='miter'><path d='M5 9l7 7 7-7'/></svg>"); background-position: right 10px center; background-size: 16px 16px; background-repeat: no-repeat; padding-right: 36px; }
 .bsheet__field [aria-invalid="true"] { border-bottom-color: #B3261E; }
 .bsheet__err { margin: 0; font: 500 13px/18px var(--font-mono); color: #B3261E; }
 .bsheet__send {
-  margin-top: var(--sp-3); height: 50px; border: 0; border-radius: 0; background: #262626; color: var(--cz-text-inverse);
-  font: 500 var(--fs-button)/1 var(--font-brand); letter-spacing: var(--tr-button); text-transform: uppercase; cursor: pointer; transition: background-color var(--dur-fast) var(--ease-out);
+  margin-top: var(--sp-3); height: 50px; border: 0; border-radius: 0; background: #272626; color: var(--cz-text-inverse);
+  font: 700 var(--fs-button)/1 var(--font-brand); letter-spacing: var(--tr-button); text-transform: uppercase; cursor: pointer; transition: background-color var(--dur-fast) var(--ease-out);
 }
 .bsheet__send:hover { background: var(--cz-ink); }
 .bsheet__send:disabled { opacity: .5; cursor: default; }
