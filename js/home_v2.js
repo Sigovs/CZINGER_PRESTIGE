@@ -917,6 +917,20 @@
       true,
     );
   });
+  // v2: arriving with a hash (e.g. from a model page) — land after the pins have measured the page
+  if (location.hash && !window.__hashLanded) {
+    window.__hashLanded = true;
+    addEventListener("load", () =>
+      setTimeout(() => {
+        const h = location.hash;
+        const i = stations.findIndex((st) => `#${st.id}` === h);
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+        if (i >= 0 || h === "#bench") return goTo(Math.max(i, 0));
+        const t = document.querySelector(h);
+        if (t && lenis) lenis.scrollTo(t, { immediate: true });
+      }, 250),
+    );
+  }
   function slideIn(root, dir, desk, opts = {}) {
     const dx = (desk ? 100 : 28) * dir;
     const splits = [];

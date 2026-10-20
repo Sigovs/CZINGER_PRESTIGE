@@ -404,6 +404,12 @@ section[id], [id^="expr-"] { scroll-margin-top: var(--hdr-h); }
 .tb__shared { font: 500 var(--fs-label)/20px var(--font-mono); color: var(--cz-ink); }
 .tb__src { font: 500 var(--fs-label)/20px var(--font-mono); color: var(--cz-text-secondary); }
 .station__cta { margin-top: var(--sp-2); }
+/* v2: Explore → model page, beside Inquire (Alex, 20 Oct 2026) */
+.station__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); margin-top: var(--sp-2); }
+.station__ctas .station__cta { margin-top: 0; }
+.station__explore { gap: var(--sp-2); border: var(--hairline) solid currentColor; color: inherit; background: transparent; }
+.station__explore:hover { background: rgb(127 127 127 / .14); }
+.station__explore .ico { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
 .rail { display: none; }
 .bench.is-staged { background: var(--cz-ink); }
 .bench.is-staged .bench__stage { height: 100vh; height: 100svh; padding: 0; overflow: hidden; }

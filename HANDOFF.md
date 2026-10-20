@@ -28,6 +28,15 @@ Use a web server, not `file://`. For example: `python3 -m http.server 8000`, the
 
 Full-screen film sections pin briefly. Their copy slides in, holds, then exits with the scroll.
 
+## Model pages (placeholders)
+- The pages are `21c-hdf.html`, `21c-vmax.html` and `21c-spyder.html`, styled by `css/model.css` plus the shared `css/home_v2.css`.
+- Each one says "Model page coming soon" and shows the model logo, the head-on cutout and a short note.
+- Each one has two buttons: "Inquire" goes to `index_v2.html#inquire` and "See it on the bench" goes to `index_v2.html#expr-…`.
+- Links to these pages:
+  - the 21C HDF / VMax / Spyder items in the menu;
+  - the "Explore" button beside "Inquire" on each bench card.
+- Hash links arriving from another page are re-landed after the pins measure the page (see `home_v2.js`, "arriving with a hash").
+
 ## Hero slider (v2)
 - **Slide 1:** the Miami trio film. It plays once (18.3 s), crossfades to slide 2, which holds for 8 s, then returns to the film.
 - **Slide 2:** the 21C Spyder photo with a WebGL "distort" overlay on desktop only. `?distort=0` turns the overlay off.

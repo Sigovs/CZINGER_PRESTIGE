@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
-<link rel="stylesheet" href="css/home_v2.css?v=104">
+<link rel="stylesheet" href="css/home_v2.css?v=105">
 <link rel="preload" as="image" href="assets/video/hero-trio-d.webp" media="(min-width: 768px)">
 <link rel="preload" as="image" href="assets/video/hero-trio-m.webp" media="(max-width: 767px)">
 <link rel="preload" as="image" type="image/avif" imagesrcset="assets/hero-desktop-1600.avif 1600w, assets/hero-desktop-2400.avif 2400w" imagesizes="100vw" media="(min-width: 768px)">
@@ -61,10 +61,9 @@
 <div class="menu" id="menu" hidden data-menu data-lenis-prevent>
   <nav aria-label="Main">
     <ul class="menu__list">
-      <li><a href="#bench" data-menu-link>The three expressions</a></li>
-      <li><a href="#expr-hdf" data-menu-link>21C HDF</a></li>
-      <li><a href="#expr-vmax" data-menu-link>21C VMax</a></li>
-      <li><a href="#expr-spyder" data-menu-link>21C Spyder</a></li>
+      <li><a href="21c-hdf.html">21C HDF</a></li>
+      <li><a href="21c-vmax.html">21C VMax</a></li>
+      <li><a href="21c-spyder.html">21C Spyder</a></li>
       <li><a href="#engineering" data-menu-link>Engineering</a></li>
       <li><a href="#manufacturing" data-menu-link>Manufacturing</a></li>
       <li><a href="#records" data-menu-link>Records</a></li>
@@ -157,7 +156,10 @@
             </dl>
             <p class="tb__shared">1,250 hp combined · 2.88 L twin-turbo V8 · 11,000 rpm</p>
             <ol class="station__notes" aria-hidden="true"><li>1 · Rear wing · 5,445 lb max downforce @ 200 mph</li><li>2 · BrakeNode™ · available as an upgrade</li></ol>
-            <a class="btn btn--ink station__cta" href="#inquire" data-expression="hdf">Inquire<span class="d-only"> about the </span><span class="m-only" aria-hidden="true"> · </span>21C HDF</a>
+            <div class="station__ctas">
+              <a class="btn btn--ink station__cta" href="#inquire" data-expression="hdf">Inquire<span class="d-only"> about the </span><span class="m-only" aria-hidden="true"> · </span>21C HDF</a>
+              <a class="btn station__explore" href="21c-hdf.html">Explore<span class="sr"> the 21C HDF</span><svg class="ico ico--arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            </div>
           </div>
         </li>
         
@@ -193,7 +195,10 @@
             </dl>
             <p class="tb__shared">1,250 hp combined · 2.88 L twin-turbo V8 · 11,000 rpm</p>
             <ol class="station__notes" aria-hidden="true"><li>1 · Longtail · extended rear bodywork</li><li>2 · Inline seating · driver and passenger in tandem</li></ol>
-            <a class="btn btn--ink station__cta" href="#inquire" data-expression="vmax">Inquire<span class="d-only"> about the </span><span class="m-only" aria-hidden="true"> · </span>21C VMax</a>
+            <div class="station__ctas">
+              <a class="btn btn--ink station__cta" href="#inquire" data-expression="vmax">Inquire<span class="d-only"> about the </span><span class="m-only" aria-hidden="true"> · </span>21C VMax</a>
+              <a class="btn station__explore" href="21c-vmax.html">Explore<span class="sr"> the 21C VMax</span><svg class="ico ico--arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            </div>
           </div>
         </li>
         
@@ -229,7 +234,10 @@
             </dl>
             <p class="tb__shared">1,250 hp combined · 2.88 L twin-turbo V8 · 11,000 rpm</p>
             <ol class="station__notes" aria-hidden="true"><li>1 · Open cockpit · shown with the roof removed</li><li>2 · BrakeNode™ standard · 410 mm carbon-ceramic front discs</li></ol>
-            <a class="btn btn--ink station__cta" href="#inquire" data-expression="spyder">Inquire<span class="d-only"> about the </span><span class="m-only" aria-hidden="true"> · </span>21C Spyder</a>
+            <div class="station__ctas">
+              <a class="btn btn--ink station__cta" href="#inquire" data-expression="spyder">Inquire<span class="d-only"> about the </span><span class="m-only" aria-hidden="true"> · </span>21C Spyder</a>
+              <a class="btn station__explore" href="21c-spyder.html">Explore<span class="sr"> the 21C Spyder</span><svg class="ico ico--arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            </div>
           </div>
         </li>
       </ol>
@@ -468,6 +476,6 @@
 <script src="https://unpkg.com/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://unpkg.com/gsap@3.15.0/dist/SplitText.min.js" defer></script>
 <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
-<script src="js/home_v2.js?v=104" defer></script>
+<script src="js/home_v2.js?v=106" defer></script>
 </body>
 </html>
