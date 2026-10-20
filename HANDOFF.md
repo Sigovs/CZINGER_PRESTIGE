@@ -31,8 +31,11 @@ Full-screen film sections pin briefly. Their copy slides in, holds, then exits w
 ## Model pages (placeholders)
 - The pages are `21c-hdf.html`, `21c-vmax.html` and `21c-spyder.html`, styled by `css/model.css` plus the shared `css/home_v2.css`.
 - Each one says "Model page coming soon" and shows the model logo, the head-on cutout and a short note.
+- They are single-screen pages with no scroll: the car resizes to fit the viewport height.
+- The car carries the same glitch as the hero photo, without the skeleton x-ray. The glitch is WebGL, in `js/model.js`; `?distort=0` turns it off. With reduced motion there is no glitch.
 - Each one has two buttons: "Inquire" goes to `index_v2.html#inquire` and "See it on the bench" goes to `index_v2.html#expr-…`.
 - Links to these pages:
+  - the hero photo caption, the station logos, the model names in the BrakeNode and Records copy, and a "Models" column in the footer;
   - the 21C HDF / VMax / Spyder items in the menu;
   - the "Explore" button beside "Inquire" on each bench card.
 - Hash links arriving from another page are re-landed after the pins measure the page (see `home_v2.js`, "arriving with a hash").
@@ -69,7 +72,7 @@ All other video files are in `assets/video/`, each with a `-d` and `-m` version 
 ## Open items before going live
 - [ ] **Form:** `[data-form]` validates on the client only and shows a success message. Nothing is sent. Wire it to the CRM or lead endpoint. The fields are `expression`, `name`, `email`, `phone` and `message`.
 - [ ] **Phone:** every number on the page is (833) 290-6287, the Prestige group sales line. czinger.com lists +1 888-514-3028 for Czinger Miami. Prestige needs to confirm which one to use.
-- [ ] **Address:** the street number is withheld. czinger.com and the Prestige site disagree (14800 vs 14780 Biscayne Blvd).
+- [ ] **Address:** the footer shows 14780 Biscayne Blvd (the Prestige group site). czinger.com /dealers lists 14800. Prestige needs to confirm which is correct.
 - [ ] **Rights:** Czinger and Divergent film and photography are used for the prototype only. Written consent from Czinger is needed before launch. The hero trio film is Prestige's own.
 - [ ] **Indexing:** remove `<meta name="robots" content="noindex">` at launch.
 - [ ] **Footer:** remove the "Prototype, not for publication" line from the footer legal text at launch.

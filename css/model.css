@@ -1,24 +1,35 @@
 /* Model pages: "coming soon" placeholders (Alex, 20 Oct 2026). Tokens from home_v2.css. */
-.model-page { background: var(--cz-bench); color: var(--cz-ink); }
+.model-page { background: var(--cz-bench); color: var(--cz-ink); height: 100svh; overflow: hidden; }
+html:has(.model-page) { overflow: hidden; }
 .model-page .hdr { position: fixed; }
 .model__back { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: var(--tap); font-size: var(--fs-label); color: inherit; text-decoration: none; }
 .model__back .ico { width: 18px; height: 18px; }
 .model {
-  min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-  padding: calc(var(--hdr-h) + var(--sp-6)) var(--margin) var(--sp-8);
+  height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: calc(var(--hdr-h) + var(--sp-4)) var(--margin) var(--sp-6);
 }
 .model__label { margin-bottom: var(--sp-5); }
 .model__title { margin: 0; line-height: 0; }
-.model__logo { width: min(420px, 78vw); height: auto; }
+.model__logo { width: min(360px, 72vw); height: auto; }
 .model__tag { margin-top: var(--sp-4); font-size: var(--fs-lede); line-height: 1.4; color: #3d4045; }
-.model__car { width: min(560px, 86vw); height: auto; margin-top: var(--sp-6); }
-.model__note { max-width: 46ch; margin-top: var(--sp-5); font-size: 16px; line-height: 1.55; color: #3d4045; }
+.model__carwrap { position: relative; display: inline-block; margin-top: var(--sp-5); line-height: 0; }
+.model__car { width: auto; height: clamp(110px, calc(100svh - 590px), 300px); max-width: 78vw; object-fit: contain; }
+.model__car.is-glitched { visibility: hidden; }
+.model__glitch { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.model__note { max-width: 46ch; margin-top: var(--sp-4); font-size: 16px; line-height: 1.55; color: #3d4045; }
 .model__cta { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-3); margin-top: var(--sp-6); }
 .model__ghost { border: var(--hairline) solid currentColor; color: var(--cz-ink); background: transparent; }
 .model__ghost:hover { background: rgb(10 10 10 / .06); }
-.model__more { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--sp-5); margin-top: var(--sp-7); font-size: var(--fs-label); }
+.model__more { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--sp-5); margin-top: var(--sp-5); font-size: var(--fs-label); }
 .model__more a { min-height: var(--tap); display: inline-flex; align-items: center; color: inherit; text-underline-offset: 4px; }
 @media (max-width: 767px) {
+  .model { padding-top: calc(var(--hdr-h) + var(--sp-2)); padding-bottom: var(--sp-4); }
+  .model__label { margin-bottom: var(--sp-3); }
+  .model__tag { margin-top: var(--sp-2); font-size: 16px; }
+  .model__car { height: clamp(100px, calc(100svh - 620px), 280px); }
+  .model__note { font-size: 15px; margin-top: var(--sp-3); }
+  .model__cta { margin-top: var(--sp-4); gap: var(--sp-2); }
+  .model__more { margin-top: var(--sp-3); }
   .model__back span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .model__cta { flex-direction: column; align-self: stretch; }
   .model__cta .btn { justify-content: center; }
