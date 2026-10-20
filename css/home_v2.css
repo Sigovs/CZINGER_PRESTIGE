@@ -847,3 +847,26 @@ section[id], [id^="expr-"] { scroll-margin-top: var(--hdr-h); }
   .sheet .form { gap: var(--sp-4); border-radius: 0; padding: calc(var(--hdr-h) + var(--sp-4)) var(--margin) var(--sp-6); }
   .sheet .form input, .sheet .form select, .sheet .form textarea { font-size: 16px; }
 }
+/* v2: home build sheet back on the dark glass ground (Alex, 20 Oct 2026) — fields keep the build-sheet layout, inverted */
+.sheet .form {
+  color: var(--cz-text-inverse);
+  background: rgb(18 19 24 / .55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: var(--hairline) solid var(--cz-rule-dark); box-shadow: none;
+}
+.sheet .form > .label { background: var(--cz-text-inverse); color: var(--cz-ink); }
+.sheet .form__row label, .sheet .form__n { color: var(--cz-text-inverse); }
+.sheet .form__opt { color: var(--cz-text-inverse-body); }
+.sheet .form input, .sheet .form select, .sheet .form textarea {
+  background-color: rgb(255 255 255 / .06); color: var(--cz-text-inverse); border-bottom-color: rgb(255 255 255 / .5);
+}
+.sheet .form input:not(:placeholder-shown), .sheet .form textarea:not(:placeholder-shown), .sheet .form select:has(option:checked:not([value=""])) { background-color: rgb(255 255 255 / .14); }
+.sheet .form input:focus, .sheet .form select:focus, .sheet .form textarea:focus { background-color: rgb(255 255 255 / .16); border-bottom-color: var(--cz-text-inverse); }
+.sheet .form input:focus-visible, .sheet .form select:focus-visible, .sheet .form textarea:focus-visible { outline-color: var(--cz-gold); }
+.sheet .form select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='square' stroke-linejoin='miter'><path d='M5 9l7 7 7-7'/></svg>"); }
+.sheet .form [aria-invalid="true"] { border-bottom-color: #F08A73; }
+.sheet .form__err { color: #F08A73; }
+.sheet .form__send { background: var(--cz-gold); color: var(--cz-gold-fg); }
+.sheet .form__send:hover { background: var(--cz-gold-hover); }
+.sheet .form__send:focus-visible { outline-color: var(--cz-gold); }
+.sheet .form__ok { color: var(--cz-text-inverse); }
+@media (max-width: 767px) { .sheet .form { border-inline: 0; } }
