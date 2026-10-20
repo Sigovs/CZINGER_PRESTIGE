@@ -2,6 +2,56 @@
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduce && window.Lenis) new Lenis({ autoRaf: true, anchors: true });
+  // Build sheet: the inquire form slides up from the foot (Figma 889:422)
+  const sheet = document.querySelector("[data-sheet]");
+  if (sheet && sheet.showModal) {
+    const form = sheet.querySelector("[data-sheet-form]");
+    let opener = null, closing = 0;
+    const open = (e) => {
+      e.preventDefault();
+      opener = e.currentTarget;
+      clearTimeout(closing);
+      if (!sheet.open) sheet.showModal();
+      requestAnimationFrame(() => requestAnimationFrame(() => sheet.classList.add("is-open")));
+      const first = form.querySelector("#s-name");
+      setTimeout(() => first && first.focus({ preventScroll: true }), reduce ? 0 : 350);
+    };
+    const close = () => {
+      sheet.classList.remove("is-open");
+      closing = setTimeout(() => {
+        sheet.close();
+        if (opener) opener.focus();
+      }, reduce ? 0 : 600);
+    };
+    document.querySelectorAll("[data-sheet-open]").forEach((a) => a.addEventListener("click", open));
+    sheet.querySelector("[data-sheet-close]").addEventListener("click", close);
+    sheet.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      close();
+    });
+    sheet.addEventListener("click", (e) => {
+      if (e.target === sheet) {
+        const r = sheet.getBoundingClientRect();
+        if (e.clientY < r.top || e.clientX < r.left || e.clientX > r.right) close();
+      }
+    });
+    const check = (el) => {
+      const ok = el.checkValidity() && (!el.required || el.value.trim() !== "");
+      el.setAttribute("aria-invalid", String(!ok));
+      const err = document.getElementById(el.getAttribute("aria-describedby") || "");
+      if (err) err.hidden = ok;
+      return ok;
+    };
+    const fields = [...form.querySelectorAll("input")];
+    fields.forEach((el) => el.addEventListener("blur", () => { if (el.value || el.getAttribute("aria-invalid")) check(el); }));
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const bad = fields.filter((el) => !check(el));
+      if (bad.length) return bad[0].focus();
+      form.querySelector("[data-sheet-ok]").hidden = false;
+      form.querySelector(".bsheet__send").disabled = true;
+    });
+  }
   const img = document.querySelector("[data-glitch]");
   if (!img || reduce || new URLSearchParams(location.search).get("distort") === "0") return;
   const cv = document.createElement("canvas");

@@ -34,3 +34,50 @@ html:has(.model-page) { overflow: hidden; }
   .model__cta { flex-direction: column; align-self: stretch; }
   .model__cta .btn { justify-content: center; }
 }
+
+/* Build sheet: the inquire form slides up from the foot of the screen (Figma 889:422, Alex, 20 Oct 2026) */
+.bsheet {
+  position: fixed; inset: auto 0 0; margin: 0 auto; padding: 0; border: 0;
+  width: min(640px, 100vw); max-width: none; height: auto; max-height: min(92svh, 700px);
+  border-radius: 14px 14px 0 0; color: var(--cz-ink);
+  background: rgb(236 237 238 / .8); -webkit-backdrop-filter: blur(28px) saturate(1.2); backdrop-filter: blur(28px) saturate(1.2);
+  box-shadow: 0 -1px 0 rgb(255 255 255 / .6) inset, 0 -24px 60px rgb(10 10 10 / .12);
+  overflow: auto; overscroll-behavior: contain;
+  transform: translateY(100%); transition: transform .6s var(--ease-out), visibility 0s linear .6s; visibility: hidden;
+}
+.bsheet.is-open { transform: none; visibility: visible; transition: transform .6s var(--ease-out), visibility 0s; }
+.bsheet::backdrop { background: rgb(10 10 10 / 0); transition: background .6s var(--ease-out); }
+.bsheet.is-open::backdrop { background: rgb(10 10 10 / .12); }
+.bsheet__form { display: grid; gap: var(--sp-5); padding: var(--sp-7) clamp(var(--margin), 8%, 100px) var(--sp-8); text-align: left; }
+.bsheet__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-3); }
+.bsheet__tag { margin: 0; padding: 6px 8px; background: var(--cz-ink); color: var(--cz-text-inverse); font: 500 16px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.bsheet__close { width: var(--tap); height: var(--tap); display: grid; place-items: center; margin: -6px -6px -6px 0; padding: 0; border: 0; background: none; cursor: pointer; }
+.bsheet__close svg { width: 34px; height: 34px; padding: 7px; background: var(--cz-ink); stroke: var(--cz-text-inverse); stroke-width: 1.4; fill: none; transition: background-color var(--dur-fast) var(--ease-out); }
+.bsheet__close:hover svg { background: #333; }
+.bsheet__field { display: grid; gap: 6px; }
+.bsheet__field label { font: 500 14px/16px var(--font-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--cz-ink); }
+.bsheet__opt { color: #4f5359; }
+.bsheet__field input, .bsheet__field select, .bsheet__field textarea {
+  width: 100%; min-height: 36px; padding: 8px; border: 0; border-bottom: 1px solid rgb(10 10 10 / .45); border-radius: 0;
+  background: rgb(10 10 10 / .06); color: var(--cz-ink); font: 500 14px/20px var(--font-mono); letter-spacing: .04em; text-transform: uppercase;
+  -webkit-appearance: none; appearance: none; resize: none; transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.bsheet__field input:focus, .bsheet__field select:focus, .bsheet__field textarea:focus { outline: none; background: rgb(255 255 255 / .7); border-bottom-color: var(--cz-ink); }
+.bsheet__field input:not(:placeholder-shown), .bsheet__field textarea:not(:placeholder-shown), .bsheet__field select { background: rgb(255 255 255 / .6); }
+.bsheet__field select { background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+.bsheet__field [aria-invalid="true"] { border-bottom-color: #B3261E; }
+.bsheet__err { margin: 0; font: 500 13px/18px var(--font-mono); color: #B3261E; }
+.bsheet__send {
+  margin-top: var(--sp-3); height: 50px; border: 0; border-radius: 0; background: #262626; color: var(--cz-text-inverse);
+  font: 500 var(--fs-button)/1 var(--font-brand); letter-spacing: var(--tr-button); text-transform: uppercase; cursor: pointer; transition: background-color var(--dur-fast) var(--ease-out);
+}
+.bsheet__send:hover { background: var(--cz-ink); }
+.bsheet__send:disabled { opacity: .5; cursor: default; }
+.bsheet__close:focus-visible svg, .bsheet__send:focus-visible { outline: 2px solid var(--cz-gold-deep, #8A672F); outline-offset: 3px; }
+.bsheet__ok { margin: 0; font: 500 14px/20px var(--font-mono); }
+@media (max-width: 767px) {
+  .bsheet { border-radius: 12px 12px 0 0; max-height: 92svh; }
+  .bsheet__form { gap: var(--sp-4); padding: var(--sp-5) var(--margin) calc(var(--sp-6) + env(safe-area-inset-bottom)); }
+  .bsheet__field input, .bsheet__field select, .bsheet__field textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .bsheet, .bsheet.is-open, .bsheet::backdrop { transition: none; } }

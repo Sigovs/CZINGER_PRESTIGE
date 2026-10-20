@@ -33,6 +33,12 @@ Full-screen film sections pin briefly. Their copy slides in, holds, then exits w
 - Each one says "Model page coming soon" and shows the model logo, the head-on cutout and a short note.
 - They are single-screen pages with no scroll: the car resizes to fit the viewport height.
 - The car carries the same glitch as the hero photo, without the skeleton x-ray. The glitch is WebGL, in `js/model.js`; `?distort=0` turns it off. With reduced motion there is no glitch.
+- **Inquire on a model page** ("Inquire about the 21C …" and the header "Inquire") opens a build-sheet form that slides up from the foot of the screen (Figma `uCrlfBySwWc1YQ9tgyV8lm`, node 889:422).
+  - It is a native `<dialog>` with a focus trap. Esc, the ✕ or a click outside close it, and focus goes back to the button that opened it.
+  - The expression is pre-selected for the current model.
+  - It uses the same fields as the home page form: `expression`, `name`, `email`, `phone` and `message`.
+  - It validates on the client only and is **not wired** to anything yet.
+  - Without JavaScript, the button falls back to `index_v2.html#inquire`.
 - Each one has two buttons: "Inquire" goes to `index_v2.html#inquire` and "See it on the bench" goes to `index_v2.html#expr-…`.
 - Links to these pages:
   - the hero photo caption, the station logos, the model names in the BrakeNode and Records copy, and a "Models" column in the footer;
@@ -70,7 +76,7 @@ All other video files are in `assets/video/`, each with a `-d` and `-m` version 
 | `?distort=0` / `?distort=burst` | Hero photo overlay off, or always on |
 
 ## Open items before going live
-- [ ] **Form:** `[data-form]` validates on the client only and shows a success message. Nothing is sent. Wire it to the CRM or lead endpoint. The fields are `expression`, `name`, `email`, `phone` and `message`.
+- [ ] **Forms:** `[data-form]` on the home page and `[data-sheet-form]` on the model pages validate on the client only and shows a success message. Nothing is sent. Wire it to the CRM or lead endpoint. The fields are `expression`, `name`, `email`, `phone` and `message`.
 - [ ] **Phone:** every number on the page is (833) 290-6287, the Prestige group sales line. czinger.com lists +1 888-514-3028 for Czinger Miami. Prestige needs to confirm which one to use.
 - [ ] **Address:** the footer shows 14780 Biscayne Blvd (the Prestige group site). czinger.com /dealers lists 14800. Prestige needs to confirm which is correct.
 - [ ] **Rights:** Czinger and Divergent film and photography are used for the prototype only. Written consent from Czinger is needed before launch. The hero trio film is Prestige's own.
