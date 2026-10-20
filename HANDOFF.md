@@ -13,7 +13,7 @@ Use a web server, not `file://`. For example: `python3 -m http.server 8000`, the
 - CDN dependencies, with pinned versions:
   - GSAP 3.15.0 with ScrollTrigger and SplitText (unpkg)
   - Lenis 1.3.26 (unpkg), CSS and JS
-  - Google Fonts: Instrument Sans 400/500 and JetBrains Mono 500
+  - Google Fonts: Instrument Sans 400/500/700 and JetBrains Mono 500
 - For production, self-host these files or keep the versions pinned.
 - Smooth scroll comes from Lenis. With `prefers-reduced-motion: reduce`, Lenis, the pins and autoplay are all off, and the page falls back to a static version.
 
