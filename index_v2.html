@@ -12,7 +12,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
-<link rel="stylesheet" href="css/home_v2.css?v=101">
+<link rel="stylesheet" href="css/home_v2.css?v=102">
+<link rel="preload" as="image" href="assets/video/hero-trio-d.webp" media="(min-width: 768px)">
+<link rel="preload" as="image" href="assets/video/hero-trio-m.webp" media="(max-width: 767px)">
 <link rel="preload" as="image" type="image/avif" imagesrcset="assets/hero-desktop-1600.avif 1600w, assets/hero-desktop-2400.avif 2400w" imagesizes="100vw" media="(min-width: 768px)">
 <link rel="preload" as="image" type="image/avif" imagesrcset="assets/hero-mobile-780.avif 780w, assets/hero-mobile-1170.avif 1170w" imagesizes="100vw" media="(max-width: 767px)">
 </head>
@@ -75,6 +77,13 @@
 <main id="top">
   
   <section class="hero" data-act="hero" data-tone="dark" aria-labelledby="hero-title">
+    <div class="hero__slide hero__slide--film is-active" data-hero-slide="0" aria-hidden="false">
+      <video class="hero__film" muted playsinline preload="auto" poster="assets/video/hero-trio-d.webp" data-hero-film
+             data-src-d="assets/video/hero-trio-d.mp4" data-src-m="assets/video/hero-trio-m.mp4"
+             data-poster-d="assets/video/hero-trio-d.webp" data-poster-m="assets/video/hero-trio-m.webp"
+             aria-label="Three 21Cs driven through Miami: Ocean Drive, the causeways and the downtown skyline"></video>
+    </div>
+    <div class="hero__slide hero__slide--photo" data-hero-slide="1" aria-hidden="true">
     <picture class="hero__photo">
       <source media="(max-width: 767px)" type="image/avif" srcset="assets/hero-mobile-780.avif 780w, assets/hero-mobile-1170.avif 1170w" sizes="100vw">
       <source media="(max-width: 767px)" type="image/webp" srcset="assets/hero-mobile-780.webp 780w, assets/hero-mobile-1170.webp 1170w" sizes="100vw">
@@ -82,6 +91,7 @@
       <img src="assets/hero-desktop-1600.webp" srcset="assets/hero-desktop-1600.webp 1600w, assets/hero-desktop-2400.webp 2400w" sizes="100vw"
            alt="The 21C Spyder in profile, roof off, alone on a lit studio floor" width="2400" height="1800" fetchpriority="high" data-hero-photo>
     </picture>
+    </div>
     <video class="hero__video" muted loop playsinline preload="none" hidden data-hero-video
            data-src-d="assets/video/hero-h2-d.mp4" data-src-m="assets/video/hero-h2-m.mp4" data-poster-d="assets/video/hero-h2-d.webp" data-poster-m="assets/video/hero-h2-m.webp"
            aria-label="The 21C Spyder approaching on a desert road at dusk"></video>
@@ -96,7 +106,12 @@
         <a class="link-arrow" href="#bench">The three expressions<svg class="ico ico--arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </p>
     </div>
-    <p class="hero__caption" data-hero-copy>Pictured: 21C Spyder</p>
+    <p class="hero__caption" data-hero-copy><span data-hero-cap="0">Filmed in Miami for Czinger Miami</span><span data-hero-cap="1" hidden>Pictured: 21C Spyder</span></p>
+    <div class="hero__dots" data-hero-dots role="group" aria-label="Hero slides">
+      <button type="button" class="hero__dot is-active" data-hero-go="0" aria-current="true"><span class="hero__dot-n">01</span><span class="hero__dot-t">Miami</span><span class="hero__dot-bar" aria-hidden="true"><i data-hero-bar></i></span></button>
+      <button type="button" class="hero__dot" data-hero-go="1" aria-current="false"><span class="hero__dot-n">02</span><span class="hero__dot-t">21C Spyder</span><span class="hero__dot-bar" aria-hidden="true"><i data-hero-bar></i></span></button>
+      <button type="button" class="hero__dot-pause" data-hero-pause aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14"/><path class="i-play" d="M8 5.5v13l11-6.5z"/></svg><span class="sr">Pause slideshow</span></button>
+    </div>
   </section>
   
   <section class="bench" id="bench" data-act="bench" data-tone="light" data-bench aria-labelledby="bench-title">
@@ -453,6 +468,6 @@
 <script src="https://unpkg.com/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://unpkg.com/gsap@3.15.0/dist/SplitText.min.js" defer></script>
 <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
-<script src="js/home_v2.js?v=101" defer></script>
+<script src="js/home_v2.js?v=102" defer></script>
 </body>
 </html>
