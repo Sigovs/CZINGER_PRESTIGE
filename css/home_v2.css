@@ -185,7 +185,8 @@ section[id], [id^="expr-"] { scroll-margin-top: var(--hdr-h); }
 .hdr__tel .ico { width: 18px; height: 18px; }
 .hdr__cta { height: 40px; padding-inline: var(--sp-5); }
 @media (max-width: 1439px) { .hdr__nav { gap: var(--sp-4); } }
-@media (max-width: 1299px) { .hdr__nav { display: none; } }
+@media (max-width: 1199px) { .hdr__nav, .hdr__tel-num { display: none; } .hdr__tel { justify-content: center; min-width: var(--tap); } }
+@media (max-width: 999px) { .hdr__cta.btn--ghost { display: none; } }
 @media (max-width: 767px) {
   .hdr { gap: var(--sp-2); }
   .hdr__menu [data-menu-label] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
