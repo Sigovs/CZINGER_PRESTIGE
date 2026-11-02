@@ -70,7 +70,7 @@
 .rf__rec .tb__fig.is-dim { opacity: .45; }
 
 /* NeuralNode: plates pass over a held photograph */
-.mo + .rf { margin-top: 80vh; margin-top: 80svh; }
+.ov > .mo + * { margin-top: 80vh; margin-top: 80svh; }
 .ck { position: relative; background: var(--cz-ink); color: var(--cz-text-inverse); isolation: isolate; }
 .ck__bg { position: sticky; top: 0; height: 100vh; height: 100svh; margin-bottom: -100vh; margin-bottom: -100svh; overflow: hidden; z-index: 0; background: var(--cz-ink); }
 .ck__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
@@ -96,6 +96,9 @@
 .bn__ph::before { content: ''; position: sticky; top: 0; z-index: 2; height: var(--hdr-h); margin-bottom: calc(-1 * var(--hdr-h) - var(--sp-5)); background: #E6E6E6; }
 .bn__ph img { width: 100%; height: 100%; object-fit: cover; }
 
+/* Held photographs above run on under the next section until it has covered them */
+.mp .beats { position: relative; z-index: 1; }
+
 /* Specifications */
 .sp { position: relative; z-index: 1; padding-block: var(--sp-10) var(--sp-8); }
 .sp__in { max-width: var(--container); margin-inline: auto; }
@@ -106,6 +109,33 @@
 .sp__grp dl > div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--sp-4); padding-block: var(--sp-4); border-top: var(--hairline) solid var(--cz-rule-light); }
 .sp__grp dt { font: 500 var(--fs-label)/22px var(--font-mono); color: var(--cz-text-secondary); }
 .sp__grp dd { font-size: 16px; line-height: 24px; font-variant-numeric: tabular-nums lining-nums; }
+
+/* VMax: HDF becomes VMax on the bench, same camera position */
+.rf--bench { background: var(--cz-bench); color: var(--cz-ink); }
+.rf--bench .rf__stage { background: none; }
+.rf--bench .rf__im { left: 0; top: 0; inset: 0; width: 100%; height: 100%; max-width: none; aspect-ratio: auto; object-fit: contain; object-position: 50% 50%; transform: none; -webkit-mask: none; mask: none; }
+.rf--bench .rf__line { top: 32%; bottom: 14%; background: rgb(10 10 10 / .5); }
+.rf--bench .rf__tag { color: var(--cz-ink); }
+.rf__frame { cursor: default; touch-action: auto; user-select: auto; -webkit-user-select: auto; }
+
+/* HDF: five tracks */
+.tr { position: relative; padding-block: var(--sp-9); }
+.tr__in { max-width: var(--container); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--sp-7); align-items: start; }
+.tr__list li { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-5); padding-block: var(--sp-4); border-top: var(--hairline) solid var(--cz-rule-light); }
+.tr__list span { color: var(--cz-text-secondary); }
+.tr__list b { font-size: var(--fs-fig); line-height: 1; font-weight: 500; letter-spacing: -.02em; font-variant-numeric: tabular-nums lining-nums; }
+
+/* HDF: each record slides over the last */
+.hs { position: relative; background: var(--cz-ink); }
+.hs__it { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 560px; display: grid; grid-template-columns: 1fr 1fr; background: var(--cz-ink); color: var(--cz-text-inverse); overflow: hidden; }
+.hs__ph { overflow: hidden; }
+.hs__ph img { width: 100%; height: 100%; object-fit: cover; }
+.hs__tx { align-self: center; display: grid; gap: var(--sp-3); justify-items: start; padding: var(--hdr-h) var(--margin) var(--sp-6) var(--sp-9); max-width: 680px; }
+.hs__it--rev .hs__ph { order: 2; }
+.hs__it--rev .hs__tx { justify-self: end; padding: var(--hdr-h) var(--sp-9) var(--sp-6) var(--margin); }
+.hs__t { font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--tr-display); font-variant-numeric: tabular-nums lining-nums; }
+.hs__d { font: 500 var(--fs-label)/20px var(--font-mono); color: var(--cz-text-inverse-body); }
+.hs__p { margin-top: var(--sp-2); color: var(--cz-text-inverse-body); max-width: 46ch; }
 
 /* Photographs */
 .gl { position: relative; z-index: 1; background: var(--cz-ink); padding-block: var(--sp-9); }
@@ -127,12 +157,15 @@
 .cl__scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(20deg, rgb(10 10 10 / .88) 0%, rgb(10 10 10 / .62) 32%, rgb(10 10 10 / 0) 62%); }
 .vid__actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-2); }
 
+.cl--top .vid__copy { top: calc(var(--hdr-h) + var(--sp-7)); bottom: auto; }
+.cl--top .cl__scrim { background: linear-gradient(165deg, rgb(10 10 10 / .84) 0%, rgb(10 10 10 / .6) 30%, rgb(10 10 10 / 0) 58%); }
+
 /* The other two expressions */
 .ox { position: relative; z-index: 1; background: var(--cz-ink); color: var(--cz-text-inverse); padding: var(--sp-9) var(--margin); }
 .ox__in { max-width: var(--container); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-7); align-items: end; }
 .ox__in .bn__h { align-self: start; font-size: 40px; line-height: 1.08; }
 .ox__car { display: grid; gap: var(--sp-2); text-decoration: none; color: inherit; }
-.ox__car img { width: 100%; height: auto; aspect-ratio: 900 / 678; object-fit: contain; object-position: 50% 100%; margin-bottom: var(--sp-3); transform-origin: 50% 100%; transition: transform .7s var(--ease-out); }
+.ox__car img { width: min(70%, 290px); justify-self: center; height: auto; aspect-ratio: 900 / 678; object-fit: contain; object-position: 50% 100%; margin-bottom: var(--sp-3); transform-origin: 50% 100%; transition: transform .7s var(--ease-out); }
 .ox__car:hover img { transform: scale(1.04); }
 .ox__name { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); padding-top: var(--sp-3); border-top: var(--hairline) solid var(--cz-rule-dark); transition: border-color var(--dur-hover) var(--ease-hover); }
 .ox__car:hover .ox__name { border-top-color: var(--cz-gold); }
@@ -150,6 +183,8 @@
   .sp__grid { column-gap: var(--sp-7); }
 }
 @media (max-width: 999px) {
+  .tr__in { grid-template-columns: 1fr; }
+  .hs__tx, .hs__it--rev .hs__tx { padding-left: var(--sp-6); padding-right: var(--sp-6); }
   .bn { grid-template-columns: 1fr; }
   .bn__tx { position: static; height: auto; min-height: 0; padding: var(--sp-9) var(--margin) var(--sp-7); justify-content: flex-start; }
   .bn__in { width: min(100%, 640px); }
@@ -168,8 +203,9 @@
   .mh__logo { width: min(280px, 72vw); }
   .mh__tag { margin-top: var(--sp-4); }
   .mh__rec { left: var(--margin); right: var(--margin); bottom: var(--sp-5); width: auto; padding: var(--sp-4); }
-  .mh__rec .tb { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--sp-4); }
-  .mh__rec dd { font-size: 28px; }
+  .mh__rec .tb { display: grid; grid-template-columns: repeat(3, minmax(0, auto)); justify-content: space-between; gap: var(--sp-3); }
+  .mh__rec dd { font-size: 24px; }
+  .mh__rec dt { font-size: 12px; line-height: 16px; }
   .mh__rec .btn { width: 100%; }
   .mh .vid__toggle { left: auto; right: var(--margin); bottom: auto; top: calc(var(--hdr-h) + var(--sp-5)); }
   .mo .vid__copy { bottom: var(--sp-6); }
@@ -181,7 +217,7 @@
   .tt__id { top: calc(var(--hdr-h) + var(--sp-2)); right: var(--margin); max-width: none; gap: var(--sp-2); }
   .tt__h { font-size: 28px; }
   .tt__p { left: var(--margin); right: var(--margin); bottom: auto; top: calc(var(--hdr-h) + 112px); max-width: none; font-size: 15px; line-height: 22px; }
-  .tt__frame { bottom: 34px; width: 128vw; transform: translateX(-50%); }
+  .tt__frame { bottom: 34px; width: 112vw; transform: translateX(-50%); }
   .tt__ldr, .tt__notes { display: none; }
   .tt__read { left: var(--margin); right: var(--margin); bottom: var(--sp-4); justify-content: space-between; }
 
@@ -194,6 +230,13 @@
   .rf__rec .tb { justify-content: space-between; }
   .rf__rec dd { font-size: 32px; }
 
+  .rf--bench .rf__frame { bottom: 124px; }
+  .rf--bench .rf__line { top: 14%; bottom: 20%; }
+  .rf--bench .rf__rec { padding: var(--sp-3) var(--sp-4); }
+  .hs__it, .hs__it--rev { grid-template-columns: 1fr; grid-template-rows: 42% 1fr; }
+  .hs__it--rev .hs__ph { order: 0; }
+  .hs__tx, .hs__it--rev .hs__tx { align-self: start; justify-self: stretch; padding: var(--sp-5) var(--margin); max-width: none; }
+  .hs__p { font-size: 15px; line-height: 22px; }
   .plate { padding: var(--sp-5); }
   .plate__h, .bn__h, .ox__in .bn__h { font-size: 32px; }
   .ck__flow { gap: 54vh; padding-block: 54vh; }

@@ -84,7 +84,8 @@
   const notes = $$("[data-tt-note]");
   const count = $("[data-tt-count]");
   const N = 36, HOME = 15, dir = mobile.matches ? "m" : "d";
-  const url = (k) => `assets/spyder/spin/${dir}${String(k).padStart(2, "0")}.webp`;
+  const spinBase = frame.dataset.spin || "assets/spyder/spin/";
+  const url = (k) => `${spinBase}${dir}${String(k).padStart(2, "0")}.webp`;
   const cv = document.createElement("canvas");
   const ctx = cv.getContext("2d");
   cv.className = "tt__cv";
@@ -214,8 +215,8 @@
   });
 
   const rf = $("[data-rf]");
-  const rfTags = { off: $(".rf__tag--off", rf), on: $(".rf__tag--on", rf) };
-  const rfFigs = { off: $('[data-rf-fig="off"]', rf), on: $('[data-rf-fig="on"]', rf) };
+  const rfTags = rf && { off: $(".rf__tag--off", rf), on: $(".rf__tag--on", rf) };
+  const rfFigs = rf && { off: $('[data-rf-fig="off"]', rf), on: $('[data-rf-fig="on"]', rf) };
   const hasLibs = window.gsap && window.ScrollTrigger && window.Lenis;
   if (reduce || !hasLibs) {
     addEventListener("scroll", updateTone, { passive: true });
@@ -254,9 +255,9 @@
     });
 
     // Roof goes on: rear to nose, held a moment at each end
-    gsap.set(rf, { "--x": "100%" });
-    gsap.set(rfFigs.on, { className: "tb__fig is-dim" });
-    ScrollTrigger.create({
+    if (rf) gsap.set(rf, { "--x": "100%" });
+    if (rf) rfFigs.on.classList.add("is-dim");
+    if (rf) ScrollTrigger.create({
       trigger: "[data-rf-stage]", pin: true, start: "top top", end: () => "+=" + innerHeight * 1.5, anticipatePin: 1,
       onUpdate: (s) => {
         const p = clamp((s.progress - 0.14) / 0.72, 0, 1);
@@ -345,7 +346,7 @@
       gsap.matchMedia().add({ desk: "(min-width: 768px)", mob: "(max-width: 767px)" }, (ctx) => {
         const desk = ctx.conditions.desk;
         $$(".beat").forEach((b) => beatScroll(b, desk));
-        brakeScroll($(".bn"), desk);
+        if ($(".bn")) brakeScroll($(".bn"), desk);
       });
       ScrollTrigger.refresh();
     });
