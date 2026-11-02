@@ -1,7 +1,7 @@
 // Model pages (placeholders): Lenis + the hero's glitch on the car cutout, without the skeleton x-ray (Alex, 20 Oct 2026)
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduce && window.Lenis) new Lenis({ autoRaf: true, anchors: true });
+  if (!reduce && window.Lenis && !document.body.hasAttribute("data-own-scroll")) new Lenis({ autoRaf: true, anchors: true });
   // Build sheet: the inquire form slides up from the foot (Figma 889:422)
   const sheet = document.querySelector("[data-sheet]");
   if (sheet && sheet.showModal) {
