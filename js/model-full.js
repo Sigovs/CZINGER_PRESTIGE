@@ -290,6 +290,67 @@
     }
   });
 
+  // Powertrain, chassis, brakes: the slanted cut and sliding lines from the home page (beatScroll in home_v2.js)
+  const lineItems = (root) => {
+    const items = [];
+    [...root.children].forEach((el) => {
+      if (el.matches("h2, p.beat__p, p.bn__p")) items.push(...SplitText.create(el, { type: "lines", linesClass: "slide__line" }).lines);
+      else if (el.matches("dl.tb")) items.push(...el.children);
+      else items.push(el);
+    });
+    return items;
+  };
+  const S = 16;
+  const slantCut = (rev) => rev
+    ? [`polygon(100% 0%, 100% 0%, ${100 + S}% 100%, 100% 100%)`, `polygon(100% 0%, ${-S}% 0%, 0% 100%, 100% 100%)`]
+    : [`polygon(0% 0%, 0% 0%, ${-S}% 100%, 0% 100%)`, `polygon(0% 0%, ${100 + S}% 0%, 100% 100%, 0% 100%)`];
+  const beatScroll = (b, desk) => {
+    const rev = b.classList.contains("beat--rev");
+    const fig = $(".beat__ph", b), img = $("img", fig), dir = rev ? -1 : 1, dx = (desk ? 100 : 28) * dir;
+    const items = lineItems($(".beat__tx", b));
+    const cut = slantCut(rev);
+    const tl = gsap.timeline({ scrollTrigger: { trigger: b, start: "top 90%", end: "bottom 10%", scrub: true, invalidateOnRefresh: true } });
+    tl.to({}, { duration: 1 }, 0);
+    if (desk) tl.fromTo(fig, { clipPath: cut[0] }, { clipPath: cut[1], duration: 0.42, ease: "power2.inOut" }, 0);
+    else tl.fromTo(fig, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, 0);
+    tl.fromTo(img, { scale: 1.18, xPercent: -2 * dir }, { scale: 1, xPercent: 0, duration: 0.55, ease: "power2.out" }, 0);
+    tl.fromTo(items, { x: dx, opacity: 0 }, { x: 0, opacity: 1, duration: 0.22, stagger: 0.025, ease: "power2.out" }, 0.12)
+      .to(items, { x: dx, opacity: 0, duration: 0.2, stagger: 0.02, ease: "power2.in" }, 0.72);
+  };
+  // BrakeNode holds its copy while three photographs pass, so the copy enters and leaves on its own triggers
+  const brakeScroll = (bn, desk) => {
+    const held = matchMedia("(min-width: 1000px)").matches;
+    const dx = -(desk ? 100 : 28);
+    const items = lineItems($(".bn__in", bn));
+    const cue = $(".bn__tx", bn);
+    const rule = $("dl.tb", bn);
+    gsap.timeline({ scrollTrigger: { trigger: bn, start: "top 88%", end: "top 22%", scrub: true, invalidateOnRefresh: true } })
+      .fromTo(rule, { borderTopColor: "rgba(10, 10, 10, 0)" }, { borderTopColor: "rgba(10, 10, 10, 1)", duration: 0.5, ease: "none" }, 0.2)
+      .fromTo(items, { x: dx, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out", immediateRender: true }, 0);
+    gsap.timeline({ scrollTrigger: held
+      ? { trigger: bn, start: "bottom 145%", end: "bottom 102%", scrub: true, invalidateOnRefresh: true }
+      : { trigger: cue, start: "bottom 45%", end: "bottom 8%", scrub: true, invalidateOnRefresh: true } })
+      .to(items, { x: dx, opacity: 0, duration: 0.5, stagger: 0.04, ease: "power2.in", immediateRender: false }, 0)
+      .to(rule, { borderTopColor: "rgba(10, 10, 10, 0)", duration: 0.4, ease: "none", immediateRender: false }, 0.2);
+    const cut = slantCut(true);
+    $$("figure", bn).forEach((fig) => {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: fig, start: "top 96%", end: "top 30%", scrub: true, invalidateOnRefresh: true } });
+      if (desk) tl.fromTo(fig, { clipPath: cut[0] }, { clipPath: cut[1], duration: 0.8, ease: "power2.inOut" }, 0);
+      else tl.fromTo(fig, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "none" }, 0);
+      tl.fromTo($("img", fig), { scale: 1.18, xPercent: 2 }, { scale: 1, xPercent: 0, duration: 1, ease: "power2.out" }, 0);
+    });
+  };
+  if (window.SplitText) {
+    document.fonts.ready.then(() => {
+      gsap.matchMedia().add({ desk: "(min-width: 768px)", mob: "(max-width: 767px)" }, (ctx) => {
+        const desk = ctx.conditions.desk;
+        $$(".beat").forEach((b) => beatScroll(b, desk));
+        brakeScroll($(".bn"), desk);
+      });
+      ScrollTrigger.refresh();
+    });
+  }
+
   addEventListener("load", () => ScrollTrigger.refresh());
   updateTone();
 })();

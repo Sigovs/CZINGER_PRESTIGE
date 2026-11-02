@@ -82,7 +82,7 @@
 .plate__h { font-size: 40px; line-height: 1.08; letter-spacing: -.015em; font-weight: 500; color: var(--cz-text-inverse); }
 
 /* BrakeNode: copy held, three photographs pass */
-.bn { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; background: #E6E6E6; color: var(--cz-ink); }
+.bn { overflow: clip; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; background: #E6E6E6; color: var(--cz-ink); }
 .bn__tx { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 680px; display: flex; align-items: center; justify-content: flex-end; padding: calc(var(--hdr-h) + var(--sp-3)) var(--sp-9) var(--sp-6) var(--margin); }
 .bn__in { width: min(100%, 540px); display: grid; gap: var(--sp-4); justify-items: start; }
 .bn__h { font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: var(--tr-h2); font-weight: 500; text-wrap: balance; }
